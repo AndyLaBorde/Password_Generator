@@ -1,0 +1,98 @@
+  ____________________
+// password generator //____________________________________________________________________________________________
+//                                                                                                                  // 
+// This application's html and css are pre-built so all we need to do is add some sweet sweet javascript to make    //
+// this application fully functional.                                                                               //
+// For this application we will be using the following window object methods:                                       //
+//                                                                                                                  //
+// alert() - method displays an alert box with a message and an OK button                                           //
+//                                                                                                                  //
+// prompt() - method displays a dialog box that prompts the user for input.                                         //        
+//          - method return the input value if the user clicks OK button, otherwise it returns null.                //
+//                                                                                                                  //        
+// confirm() - method displays a dialog box with a message, an OK button, and a cancel button                       //
+//           - method returns true if user clicks OK, otherwise it returns false.                                  //
+//                                                                                                                //
+//_______________________________________________________________________________________________________________//
+
+
+create variables to hold all alphabetical characters with the value of an array containing all alpha characters  
+var aplhaUpper = ["A", "B", "C", ... ];
+
+var alphaLower = ["a", "b", "c", ...];
+
+create a variable to hold all numerical characters with the value of an array containing all numbers from 0-9
+
+var nums = ["0", "1", "2", "3", "4"...... ];
+
+create a variable containing all special characters 
+var special = ["~", ... ]
+
+// Create a variable to hold your newly generated password
+// and set its value to be an empty array.. we will fill
+// this later.
+var genPass = []
+
+when the button is clicked *** app doesnt work without this function...
+
+// Need to edit button html to add onclick="generate()" //
+
+// function below is to start the generation prompts //
+function generate() {
+
+    // prompt user to input: length of the password, and set it to a variable //
+    var passLength = prompt("Please enter the desired number of characters for your new password. ")
+    
+    // - logic for password length:
+        // **both must be truthy to move on ** //
+          //greater-than 8 && less-than 128//
+        if (passLength > 8 && passLength < 128){
+
+            // once this main test is passed, alllow the
+            // user to select which characters to
+            // include in the password: lowercase,
+            // uppercase, numbers, special characters.
+            // create a variable to hold the values of
+            // user response.
+            var wantLower = confirm("Would you like to include lower case alphabetical characters?")
+            if (wantLower === True){
+                genPass = genPass.concat(alphaLower)
+            }
+            var wantUpper = confirm("Would you like to include uppercase aplhabetical characters?")
+            else if (wantUpper === True){
+                genPass = genPass.concat(alphaUpper)
+            }
+            var wantNumber = confirm("would you like to include numbers?);
+            else if (wantNumber === True) {
+                genPass = genpass.concat(nums);
+            }
+            var wantSpecial = confirm("would you like to include special characters?");
+            else if (wantSpecial === True) {
+                genPass = genPass.concat(special);
+            }
+
+            // Create a variable for the New password
+            // you are generating inside the function
+            // method below.
+            // randomize the genpass array as many 
+            // times as the user entered for 
+            // password length and store it in 
+            // the variable newPass... 
+            var newPass = function () {
+                genPass[Math.floor(Math.random()*passLength)]
+            }
+        }
+        else {
+            // alert user to enter a number of
+            // characters witin the range of 8
+            // chatachters to 128 characters
+            // and reprompt the user to select
+            // an acceptable number of characters.
+
+            alert("Oops!! The password must be between 8 and 128 characters.)
+
+            var passLength = prompt(Please enter the desired number of characters for your new password.")
+            
+        }
+
+}
